@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer"><meta name="description" content="RoboTutor: human interventions as practice for an interactive world model and a real-robot policy.">
+  <title>RoboTutor · Interactive World Model Practice</title>
+  <link rel="icon" href="figures/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+  <script defer src="catalog.js"></script><script defer src="gallery.js"></script>
+</head>
+<body id="top">
+<a class="skip" href="#gallery">Skip to the videos</a>
+<header><div class="wrap bar"><a class="brand" href="#top"><img src="figures/mark.svg" alt="">RoboTutor</a><nav><a href="#method">Method</a><a href="#results">Results</a><a href="#gallery">Film room</a></nav></div></header>
+<main>
+<section class="hero wrap">
+  <p class="kicker">Robot learning &nbsp; / &nbsp; Project page</p>
+  <h1>RoboTutor<span>.</span></h1><p class="subtitle">Real-World Visual Reinforcement Learning<br>with Interactive World Model Augmentation</p>
+  <p class="intro">A human correction is more than a demonstration. It also tells the robot <em>where</em> it went wrong, <em>when</em> help mattered, and <em>how</em> to resume on its own.</p>
+  <a class="cta" href="#gallery">Explore paired rollouts <span aria-hidden="true">↓</span></a>
+</section>
+<section class="wrap teaser" aria-labelledby="peek-title">
+  <div class="row-head"><div><p class="kicker">A closer look · Peg insertion</p><h2 id="peek-title">Catch the deviation before takeover.</h2></div><a id="peek-link" href="#earlier">Inspect the full clip →</a></div>
+  <div class="triptych"><figure><img src="peek/real.webp" alt="Full recorded dual-camera observation at takeover"><figcaption>Recorded intervention</figcaption></figure><figure><img src="peek/factual.webp" alt="Same time, original actions in the world model"><figcaption>Prediction · original actions</figcaption></figure><figure><img src="peek/constructed.webp" alt="Same time, earlier correction in the world model"><figcaption>Prediction · earlier correction</figcaption></figure></div>
+  <p id="peek-note" class="caption">Frame 6 of the same source window. Wrist and fixed-camera images are shown in full. The circle, when available, tracks the visible red ring.</p>
+</section>
+<section class="wrap reading" id="method"><div class="topline"><p class="kicker">01 / Method</p><h2>From a correction to targeted practice.</h2></div>
+  <p>RoboTutor selects real intervention windows, proposes alternative actions, and uses a LoRA-adapted action-conditioned video world model to predict their consequences. A critic screens synthetic practice before actor–critic updates and corrective behavior cloning. Discrepancies between the reference and the current policy guide which interventions to revisit.</p>
+  <figure class="plate"><a href="figures/overview.png"><img src="figures/overview.png" loading="lazy" alt="World model, action construction, policy learning and mastery feedback in the RoboTutor loop"></a><figcaption>The interactive world model and the real-robot policy form a learning loop.</figcaption></figure>
+</section>
+<section class="wrap reading" id="results"><div class="topline"><p class="kicker">02 / Real-robot results</p><h2>Policy learning on cable clipping.</h2></div>
+  <p>The quantitative evaluations below are from the training experiments. The counterfactual films further down were generated separately for qualitative inspection.</p>
+  <figure class="plate"><a href="figures/training-curves.png"><img src="figures/training-curves.png" loading="lazy" alt="Cable-clipping success, intervention and episode length over training time"></a><figcaption>Training time is measured in minutes. Open the figure for the original resolution.</figcaption></figure>
+  <details class="robust"><summary>Robustness evaluation at the 40-minute checkpoint</summary><div><img src="figures/robustness.png" alt="Robustness evaluation, nominal versus disturbed" loading="lazy"><img src="figures/robustness-table.png" alt="Robustness evaluation table" loading="lazy"></div></details>
+</section>
+<section class="filmroom" id="gallery"><div class="wrap">
+  <p class="kicker">03 / Paired world-model rollouts</p><h2>One intervention, three kinds of practice.</h2>
+  <p class="intro">Watch what changes when the world model sees the same real starting observation and the same diffusion seed, but gets a different sequence of 12 actions. Each film keeps both camera views intact.</p>
+  <div class="toolbar"><div role="group" aria-label="Choose the task" class="tabs"><button data-task="peg" type="button">Peg insertion</button><button data-task="cable" type="button">Cable clipping</button></div><span id="count" aria-live="polite"></span></div>
+  <p class="links"><a href="#coverage">Correction augmentation</a><a href="#earlier">Earlier correction</a><a href="#handback">Handback</a></p>
+  <div id="cards" aria-label="Three practice families"></div>
+  <noscript><p>Enable JavaScript to select examples. The comparisons are also available as ordinary MP4 files in the repository’s media directory.</p></noscript>
+  <aside class="note"><strong>Reading the films</strong> · Top left is the real recording. Two panels are world-model predictions, not additional robot trials. Thin rings track a visible feature in the fixed camera (red ring or gripper bracket); they are omitted when tracking is uncertain. The frame strips show the original images without these overlays. The plot integrates both command sequences in the same physical coordinates. A common command endpoint is not proof of an identical video endpoint or task success. The offline action variations may be stronger than in online training. These are selected examples, not a success-rate evaluation.</aside>
+</div></section>
+</main><footer class="wrap"><span>RoboTutor · Real-world robot learning</span><a href="#top">Back to top ↑</a></footer></body></html>
