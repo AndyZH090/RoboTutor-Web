@@ -1,0 +1,17 @@
+{
+  "scope": "Offline paired qualitative rollouts, not online policy evaluations",
+  "architecture": "NVIDIA Cosmos-Predict2.5-2B, action conditioned",
+  "protocol": {
+    "input": "1 recorded dual-view frame; 12 seven-dimensional actions",
+    "output": "13 frames, width 512 x height 256 (two uncropped-in-the-viewer 256 x 256 camera panels)",
+    "denoising_steps": 24,
+    "guidance": 0,
+    "actual_paired_sampling_seed": 0,
+    "tcp": "Both traces are estimates integrated from actions, not measured counterfactual outcomes"
+  },
+  "task_checkpoints": {
+    "cable_clipping": {"demonstration_training_step":10000,"loaded_format":"Task-specific full EMA checkpoint including the LoRA weights","lora_rank":32,"completed_model_pairs":55,"selected_web_segments":15},
+    "peg_insertion": {"demonstration_training_step":30000,"loaded_format":"Official action-conditioned base plus the peg-specific compact EMA LoRA","lora_rank":32,"completed_model_pairs":69,"selected_web_segments":18}
+  },
+  "display": "Three actual frame streams and a command-space overlay; the 33 selected segments are illustrations, not a random benchmark sample."
+}
